@@ -27,7 +27,7 @@
             <div class="card">
                 <h1 class="card-header">Charakter erstellen</h1>
                 <div id="characters" class="card-block">
-                    <form class="form-horizontal" role="form" method="POST" action="/characters">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('characters.store') }}">
                         {{ csrf_field() }}
                         <div class="row form-group">
                             <div class="col-lg-6 form-check">
