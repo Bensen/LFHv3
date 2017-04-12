@@ -9,7 +9,7 @@
                 <ul class="navbar-nav mr-auto">
                     @if (Auth::guest())
                     @else
-                        <li class="nav-item"><a class="nav-link" href="/characters">Charaktere</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('characters.index') }}">Charaktere</a></li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="http://p383200.webspaceconfig.de/phpbb/">Forum</a></li>
                 </ul>
