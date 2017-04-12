@@ -12,9 +12,5 @@
 */
 
 Auth::routes();
-Route::get('tests', 'TestController@index');
-Route::get('tests/{test}', 'TestController@show');
 Route::get('/', 'PageController@home');
-Route::get('characters', 'CharacterController@index');
-Route::get('characters/create', 'CharacterController@create');
-Route::post('characters', 'CharacterController@store');
+Route::resource('characters', 'CharacterController');
