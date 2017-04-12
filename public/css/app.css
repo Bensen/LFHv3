@@ -1,0 +1,115 @@
+/**
+ * GENERAL
+ */
+
+body {
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/**
+ * TYPOGRAPHY
+ */
+
+small {
+    font-size: 60%;
+}
+
+.h1,
+h1 {
+    font-size: 2rem;
+}
+
+.h2,
+h2 {
+    font-size: 1.75rem;
+}
+
+.h3,
+h3 {
+    font-size: 1.5rem;
+}
+
+
+/**
+ * HEADER
+ */
+
+.navbar {
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+.navbar-brand {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.navbar .nav-link {
+    padding: 0;
+}
+
+
+/**
+ * CHARACTERS
+ */
+
+#characters .card-img-left {
+    float: left;
+    padding-right: 1em;
+    border-bottom-left-radius: calc(.25rem - 1px);
+}
+
+#characters .card-block {
+    padding: .5rem;
+}
+
+#characters .form-check-label {
+    padding-left: 0;
+}
+
+#characters .progress {
+    margin-bottom: 5px;
+}
+
+#characters .progress-bar {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+
+/**
+ * MDB
+ */
+
+label {
+    font-size: inherit;
+}
+
+#navigation .avatar img {
+    height: 32px;
+    width: 32px;
+}
+
+#navigation .avatar .dropdown-toggle:after {
+    display: none;
+}
+
+.card-block h3,
+.card-block h5 {
+    margin-bottom: 0rem;
+}
+
+
+/**
+ * FONT AWESOME
+ */
+
+.fa-5x {
+    font-size: 10em;
+}
