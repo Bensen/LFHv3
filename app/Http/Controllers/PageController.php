@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', ['except' => ['home']]);
+    }
+
     public function home()
     {
         return view('pages.home');
