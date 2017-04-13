@@ -4,14 +4,15 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+            <a class="navbar-brand" href="{{ route('pages.home') }}">{{ config('app.name') }}</a>
             <div id="navigation" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     @if (Auth::guest())
                     @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('characters.index') }}">Charaktere</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pages.ranking') }}">Rangliste</a></li>
                     @endif
-                    <li class="nav-item"><a class="nav-link" href="http://p383200.webspaceconfig.de/phpbb/">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://p383200.webspaceconfig.de/phpbb/" target="_blank">Forum</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     @if (Auth::guest())
