@@ -30,54 +30,20 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('characters.store') }}">
                         {{ csrf_field() }}
                         <div class="row form-group">
-                            <div class="col-lg-6 form-check">
-                                <div class="card">
-                                    <h3 class="card-header">Schattenjäger <small>(0 Dantrinsteine)</small></h3>
-                                    <label class="form-check-label">
-                                        <img class="card-img-left" src="{{ asset('img/shadowhunter.gif') }}">
-                                        <div class="card-block">
-                                            <p class="card-text">Seine machtvolle Aura erlaubt es ihm den Feinden das Blut auszusaugen. Es heißt, dass er nicht zu töten ist und diejenigen, die von seinem Schlag niedergestreckt werden, nie mehr aufwachen.</p>
-                                        </div>
-                                        <input class="hidden-xs-up" type="radio" name="character" value="1" checked>
-                                    </label>
+                            @foreach ($fighters as $fighter)
+                                <div class="col-lg-6 form-check">
+                                    <div class="card">
+                                        <h3 class="card-header">{{ $fighter->name }} <small>(0 Dantrinsteine)</small></h3>
+                                        <label class="form-check-label">
+                                            <div class="card-block clearfix">
+                                                <img class="card-img-left" src="{{ asset($fighter->image) }}">
+                                                <p class="card-text">{{ $fighter->description }}</p>
+                                            </div>
+                                            <input style="display: none;" type="radio" name="fighter" value="{{ $fighter->name }}">
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 form-check">
-                                <div class="card">
-                                    <h3 class="card-header">Schattenjäger <small>(0 Dantrinsteine)</small></h3>
-                                    <label class="form-check-label">
-                                        <img class="card-img-left" src="{{ asset('img/shadowhunter.gif') }}">
-                                        <div class="card-block">
-                                            <p class="card-text">Seine machtvolle Aura erlaubt es ihm den Feinden das Blut auszusaugen. Es heißt, dass er nicht zu töten ist und diejenigen, die von seinem Schlag niedergestreckt werden, nie mehr aufwachen.</p>
-                                        </div>
-                                        <input class="hidden-xs-up" type="radio" name="character" value="2">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 form-check">
-                                <div class="card">
-                                    <h3 class="card-header">Schattenjäger <small>(0 Dantrinsteine)</small></h3>
-                                    <label class="form-check-label">
-                                        <img class="card-img-left" src="{{ asset('img/shadowhunter.gif') }}">
-                                        <div class="card-block">
-                                            <p class="card-text">Seine machtvolle Aura erlaubt es ihm den Feinden das Blut auszusaugen. Es heißt, dass er nicht zu töten ist und diejenigen, die von seinem Schlag niedergestreckt werden, nie mehr aufwachen.</p>
-                                        </div>
-                                        <input class="hidden-xs-up" type="radio" name="character" value="3">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 form-check">
-                                <div class="card">
-                                    <h3 class="card-header">Schattenjäger <small>(0 Dantrinsteine)</small></h3>
-                                    <label class="form-check-label">
-                                        <img class="card-img-left" src="{{ asset('img/shadowhunter.gif') }}">
-                                        <div class="card-block">
-                                            <p class="card-text">Seine machtvolle Aura erlaubt es ihm den Feinden das Blut auszusaugen. Es heißt, dass er nicht zu töten ist und diejenigen, die von seinem Schlag niedergestreckt werden, nie mehr aufwachen.</p>
-                                        </div>
-                                        <input class="hidden-xs-up" type="radio" name="character" value="4">
-                                    </label>
-                                </div>
-                            </div>                        
+                            @endforeach                        
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-6">
