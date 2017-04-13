@@ -12,5 +12,6 @@
 */
 
 Auth::routes();
-Route::get('/', 'PageController@home');
+Route::get('/', 'PageController@home')->name('pages.home');
+Route::get('/ranking', 'PageController@ranking')->name('pages.ranking');
 Route::resource('characters', 'CharacterController');

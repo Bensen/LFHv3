@@ -10,4 +10,10 @@ class PageController extends Controller
     {
         return view('pages.home');
     }
+
+    public function ranking()
+    {
+        $characters = \App\Character::all();
+        return view('pages.ranking', compact('characters'));
+    }
 }
