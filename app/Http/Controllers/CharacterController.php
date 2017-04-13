@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Character;
+use App\Fighter;
 
 class CharacterController extends Controller
 {
@@ -33,7 +35,7 @@ class CharacterController extends Controller
         if (!auth()->user()->hasRemainingCharacters()) {
             return redirect()->route('characters.index');
         }
-        $fighters = \App\Fighter::all();
+        $fighters = Fighter::all();
         return view('characters.create', compact('fighters'));
     }
 
@@ -44,9 +46,10 @@ class CharacterController extends Controller
      */
     public function store()
     {
+        $fighters = Fighter::pluck('name')->toArray();
         $this->validate(request(), [
-            'name' => 'required|min:3|unique:characters',
-            'fighter' => 'required'
+            'name' => 'required|min:3|max:25|alpha_num|not_in:'.Rule::notIn($fighters).'unique:characters',
+            'fighter' => 'required|in:'.Rule::in($fighters),
         ]);
         auth()->user()->characters()->save(new Character([
             'name' => request('name'),
