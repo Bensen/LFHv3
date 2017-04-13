@@ -20,7 +20,7 @@
                     @else
                         <li class="nav-item avatar dropdown">
                             <a id="userDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <img class="img-fluid rounded-circle" src="{{ asset('img/avatars/avatar-default.svg') }}">
+                                <img class="img-fluid rounded-circle" src="{{ asset('img/avatars/avatar-default.svg') }}" title="Account" data-toggle="tooltip" data-placement="bottom">
                             </a>
                             <div class="dropdown-menu dropdown-primary dropdown-menu-right" aria-labelledby="userDropdown" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                 <a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
