@@ -20,7 +20,7 @@ class FightersTableSeeder extends Seeder
             'Rudolf ist ein geheimnisumwobener Samurai, der die Kampfkünste der Ninja studiert und kombiniert hat.',
             'Louis ist ein Ritter, geschützt durch eine magische Rüstung und ein Meister besonderer Kampfkünste.',
             'Firen ist ein Feuermagier und soll mit seinen Flammen angeblich den puren Wahnsinn symbolisieren.',
-            'Freeze ist ein stiller Eismager der sicht stets von einer kalten, abweisenden Aura umgeben lässt.',
+            'Freeze ist ein stiller Eismager der sich stets von einer kalten, abweisenden Aura umgeben lässt.',
             'Dennis ist der Nachkomme der Drachenkünste und liebt schnelle Kämpfe mit unerwarteten Angriffen.',
             'Woody ist der Nachkomme der Tigerkünste und versucht stets die Kontrolle in einen Kampf zu wahren.',
             'Davis ist ein außerordentlich begabter Nahkämpfer, der sich dem Drachenclan angeschlossen hat.',
