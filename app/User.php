@@ -13,6 +13,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    private $maxCharacters = 3;
+
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -20,5 +22,20 @@ class User extends Authenticatable
     public function characters()
     {
         return $this->hasMany(Character::class);
+    }
+
+    public function hasRemainingCharacters()
+    {
+        return ($this->remainingCharacters()) ? true : false ;
+    }
+
+    public function remainingCharacters()
+    {
+        return ($this->characters()->count() < $this->getMaxCharacters()) ? true : false ;
+    }
+
+    public function getMaxCharacters()
+    {
+        return $this->maxCharacters;
     }
 }
