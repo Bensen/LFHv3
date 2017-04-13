@@ -30,7 +30,11 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        return view('characters.create');
+        if (!auth()->user()->hasRemainingCharacters()) {
+            return redirect()->route('characters.index');
+        }
+        $fighters = \App\Fighter::all();
+        return view('characters.create', compact('fighters'));
     }
 
     /**
@@ -42,11 +46,12 @@ class CharacterController extends Controller
     {
         $this->validate(request(), [
             'name' => 'required|min:3|unique:characters',
-            'character' => 'required'
+            'fighter' => 'required'
         ]);
         auth()->user()->characters()->save(new Character([
             'name' => request('name'),
-            'character' => request('character'),
+            'fighter' => request('fighter'),
+            'image' => $this->fighterImage(request('fighter')),
             'level' => 1,
             'experience' => 0,
             'health' => 500,
@@ -100,5 +105,10 @@ class CharacterController extends Controller
     {
         $character->delete();
         return redirect()->route('characters.index');
+    }
+
+    public function fighterImage($fighter)
+    {
+        return 'img/characters/'.strtolower($fighter).'.gif';
     }
 }
