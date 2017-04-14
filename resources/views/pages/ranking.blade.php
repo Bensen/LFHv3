@@ -18,6 +18,7 @@
                             <th>Level</th>
                             <th>Team</th>
                             <th>Klasse</th>
+                            <th>Ruhm</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,8 +27,13 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td><a href="{{ route('character.show', $character->id) }}">{{ $character->name }}</a></td>
                                 <td>{{ $character->level }}</td>
-                                <td><a href="{{ route('team.show', $character->user->team->id) }}">{{ $character->user->team->name }}</a></td>
+                                <td>
+                                    @if($character->user->hasTeam())
+                                        <a href="{{ route('team.show', $character->user->team->id) }}">{{ $character->user->team->name }}</a>
+                                    @endif
+                                </td>
                                 <td>{{ $character->fighter }}</td>
+                                <td>{{ $character->fame }}</td>
                             </tr>
                         @endforeach
                     </tbody>

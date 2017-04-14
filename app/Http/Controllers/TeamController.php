@@ -33,35 +33,40 @@ class TeamController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->hasTeam()) {
+            return redirect()->route('team.index');
+        }
         return view('team.create');
     }
 
     /**
      * Store a new Team.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $this->validate(request(), [
             'name' => 'required|min:3|max:25|alpha_num|unique:teams',
         ]);
-        auth()->user()->team()->create(new Team([
+        $team = new Team([
             'name' => request('name'),
-        ]));
+            'fame' => 0,
+        ]);
+        $team->save();
+        auth()->user()->team()->associate($team)->save();
         return redirect()->route('team.index');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Team.
      *
      * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
     public function show(Team $team)
     {
-        //
+        return view('team.show', compact('team'));
     }
 
     /**

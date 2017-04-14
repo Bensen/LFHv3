@@ -18,7 +18,7 @@ class PageController extends Controller
 
     public function ranking()
     {
-        $characters = \App\Character::all();
+        $characters = \App\Character::orderBy('fame', 'desc')->get();
         return view('pages.ranking', compact('characters'));
     }
 }

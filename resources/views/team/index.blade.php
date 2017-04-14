@@ -9,10 +9,8 @@
     <div class="col">
         <div class="card">
             <h1 class="card-header">{{ $team->name }}</h1>
-            <div id="characters" class="card-block">
-                <div class="row">
-                    hi
-                </div>
+            <div class="card-block">
+                hi
             </div>
         </div>
     </div>

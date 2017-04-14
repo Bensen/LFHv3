@@ -57,6 +57,7 @@ class CharacterController extends Controller
             'image' => $this->fighterImage(request('fighter')),
             'level' => 1,
             'experience' => 0,
+            'fame' => 0,
             'health' => 500,
             'primary' => 'str',
             'secondary' => 'rage',
@@ -67,7 +68,7 @@ class CharacterController extends Controller
     /**
      * Display the specified Character.
      * 
-     * @param  \Character $character
+     * @param  \App\Character $character
      * @return \Illuminate\Http\Response
      */
     public function show(Character $character)
@@ -99,9 +100,9 @@ class CharacterController extends Controller
     }
 
     /**
-     * Delete the given Character.
+     * Delete the specified Character.
      * 
-     * @param  Character $character
+     * @param  \App\Character $character
      * @return \Illuminate\Http\Response
      */
     public function destroy(Character $character)
@@ -112,6 +113,6 @@ class CharacterController extends Controller
 
     public function fighterImage($fighter)
     {
-        return 'img/characters/'.strtolower($fighter).'.gif';
+    return 'img/characters/'.strtolower($fighter).'.gif';
     }
 }
