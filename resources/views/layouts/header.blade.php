@@ -9,7 +9,7 @@
                 <ul class="navbar-nav mr-auto">
                     @if (Auth::guest())
                     @else
-                        <li class="nav-item"><a class="nav-link" href="{{ route('characters.index') }}">Charaktere</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('character.index') }}">Charaktere</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('team.index') }}">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pages.ranking') }}">Rangliste</a></li>
                     @endif

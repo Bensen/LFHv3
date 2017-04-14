@@ -22,7 +22,7 @@ class CharacterController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('characters.index', compact('user'));
+        return view('character.index', compact('user'));
     }
 
     /**
@@ -33,10 +33,10 @@ class CharacterController extends Controller
     public function create()
     {
         if (!auth()->user()->hasRemainingCharacters()) {
-            return redirect()->route('characters.index');
+            return redirect()->route('character.index');
         }
         $fighters = Fighter::all();
-        return view('characters.create', compact('fighters'));
+        return view('character.create', compact('fighters'));
     }
 
     /**
@@ -61,7 +61,7 @@ class CharacterController extends Controller
             'primary' => 'str',
             'secondary' => 'rage',
         ]));
-        return redirect()->route('characters.index');
+        return redirect()->route('character.index');
     }
 
     /**
@@ -72,7 +72,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return view('characters.show', compact('character'));
+        return view('character.show', compact('character'));
     }
 
     /**
@@ -107,7 +107,7 @@ class CharacterController extends Controller
     public function destroy(Character $character)
     {
         $character->delete();
-        return redirect()->route('characters.index');
+        return redirect()->route('character.index');
     }
 
     public function fighterImage($fighter)

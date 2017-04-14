@@ -16,7 +16,7 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <h3 class="card-header clearfix">
-                                    <a href="{{ route('characters.show', ['$character' => $character->id]) }}">
+                                    <a href="{{ route('character.show', ['$character' => $character->id]) }}">
                                         {{ $character->name }} <small>({{ $character->level }})</small>
                                     </a>
                                     <button class="btn btn-danger m-0 p-2 float-right" type="button" data-toggle="modal" data-target="#characterModal{{ $character->id }}"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -31,7 +31,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="float-right" method="POST" action="{{ route('characters.destroy', ['characters' => $character->id]) }}">
+                                                    <form class="float-right" method="POST" action="{{ route('character.destroy', ['characters' => $character->id]) }}">
                                                         {{ csrf_field() }} {{ method_field('DELETE') }}
                                                         <button class="btn btn-link" type="button" data-dismiss="modal">Abbrechen</button>
                                                         <button class="btn btn-danger" type="submit">Löschen</button>
@@ -42,7 +42,7 @@
                                     </div>
 
                                 </h3>
-                                <a href="{{ route('characters.show', ['$character' => $character->id]) }}">
+                                <a href="{{ route('character.show', ['$character' => $character->id]) }}">
                                     <div class="card-block clearfix">
                                         <img class="card-img-left" src="{{ asset($character->image) }}">
                                         <div class="progress">
@@ -60,7 +60,7 @@
                     @for ($i = $user->characters->count(); $i < $user->getMaxCharacters(); $i++)
                         <div class="col-md-4">
                             <div class="card">
-                                <a href="{{ route('characters.create') }}">
+                                <a href="{{ route('character.create') }}">
                                     <h3 class="card-header clearfix">
                                         Erstellen
                                         <button class="btn btn-primary m-0 p-2 float-right"><i class="fa fa-play" aria-hidden="true"></i></button>
