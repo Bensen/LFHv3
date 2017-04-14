@@ -82,6 +82,29 @@ h3 {
     font-size: 1rem;
 }
 
+/**
+ * RANKINGS
+ */
+
+#rankings tbody, #rankings .badge {
+    font-size: 1.4rem;
+}
+
+#rankings {
+    text-shadow: 0 0 2px #000;
+    color: #fff;
+}
+
+#rankings a {
+    color: #fff;
+}
+
+#rankings img {
+    float: left;
+    margin-right: 10px;
+    height: 32px;
+    width: 32px;
+}
 
 /**
  * MDB
@@ -103,15 +126,6 @@ label {
 .card-block h3,
 .card-block h5 {
     margin-bottom: 0rem;
-}
-
-
-/**
- * FONT AWESOME
- */
-
-.fa-5x {
-    font-size: 10em;
 }
 
 

@@ -9,32 +9,35 @@
     <div class="col">
         <div class="card">
             <h1 class="card-header">Rangliste</h1>
-            <div class="card-block">
+            <div id="rankings" class="card-block">
                 <table class="table table-striped">
                     <thead class="thead-inverse">
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Level</th>
-                            <th>Team</th>
-                            <th>Klasse</th>
+                            <th>Kämpfer</th>
                             <th>Ruhm</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($characters as $character)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td><a href="{{ route('character.show', $character->id) }}">{{ $character->name }}</a></td>
-                                <td>{{ $character->level }}</td>
-                                <td>
-                                    @if($character->user->hasTeam())
-                                        <a href="{{ route('team.show', $character->user->team->id) }}">{{ $character->user->team->name }}</a>
-                                    @endif
-                                </td>
-                                <td>{{ $character->fighter }}</td>
-                                <td>{{ $character->fame }}</td>
-                            </tr>
+                            <a href="{{ route('character.show', $character->id) }}">
+                                <tr>
+                                    <th scope="row">
+                                        @if ($loop->iteration == 1) <span class="badge amber">{{ $loop->iteration }}</span>
+                                        @elseif ($loop->iteration == 2) <span class="badge grey lighten-1">{{ $loop->iteration }}</span>
+                                        @elseif ($loop->iteration == 3) <span class="badge deep-orange darken-3">{{ $loop->iteration }}</span>
+                                        @else <span class="badge grey lighten-5">{{ $loop->iteration }}</span>
+                                        @endif
+                                    </th>
+                                    <td>
+                                        <img src="{{ asset($character->image) }}">
+                                        @if ($character->user->hasTeam()) [{{ $character->user->team->name }}] @endif
+                                        {{ $character->name }}
+                                        <span class="badge badge-danger">{{ $character->level }}</span>
+                                    </td>
+                                    <td><span class="badge badge-default">{{ $character->fame }} <i class="fa fa-trophy amber-text" aria-hidden="true"></i></span></td>
+                                </tr>
+                            </a>
                         @endforeach
                     </tbody>
                 </table>
