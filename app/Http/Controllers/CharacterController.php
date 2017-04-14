@@ -15,7 +15,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Show a list of the user's characters.
+     * Display a list of the user's characters.
      * 
      * @return \Illuminate\Http\Response
      */
