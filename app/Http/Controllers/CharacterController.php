@@ -40,7 +40,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Save a new character related to the user.
+     * Store a new character related to the user.
      * 
      * @return \Illuminate\Http\Response
      */
