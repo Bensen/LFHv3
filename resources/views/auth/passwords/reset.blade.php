@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('meta')
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
