@@ -13,5 +13,6 @@
 
 Auth::routes();
 Route::get('/', 'PageController@home')->name('pages.home');
-Route::get('/ranking', 'PageController@ranking')->name('pages.ranking');
-Route::resource('characters', 'CharacterController');
+Route::get('ranking', 'PageController@ranking')->name('pages.ranking');
+Route::resource('character', 'CharacterController');
+Route::resource('team', 'TeamController');

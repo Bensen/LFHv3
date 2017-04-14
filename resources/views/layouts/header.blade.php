@@ -10,6 +10,7 @@
                     @if (Auth::guest())
                     @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('characters.index') }}">Charaktere</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('team.index') }}">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pages.ranking') }}">Rangliste</a></li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="http://p383200.webspaceconfig.de/phpbb/" target="_blank">Forum</a></li>

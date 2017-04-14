@@ -16,6 +16,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Level</th>
+                            <th>Team</th>
                             <th>Klasse</th>
                         </tr>
                     </thead>
@@ -23,8 +24,9 @@
                         @foreach ($characters as $character)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $character->name }}</td>
+                                <td><a href="{{ route('characters.show', $character->id) }}">{{ $character->name }}</a></td>
                                 <td>{{ $character->level }}</td>
+                                <td><a href="{{ route('team.show', $character->user->team->id) }}">{{ $character->user->team->name }}</a></td>
                                 <td>{{ $character->fighter }}</td>
                             </tr>
                         @endforeach
