@@ -48,7 +48,8 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <input id="name" class="form-control form-control-lg{{ $errors->has('name') ? ' form-control-danger' : '' }}" type="text" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
+                                <label class="form-control-label" for="name">Name</label>
+                                <input id="name" class="form-control form-control-lg{{ $errors->has('name') ? ' form-control-danger' : '' }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
                                 @if ($errors->has('name'))
                                     <div class="form-control-feedback">{{ $errors->first('name') }}</div>
                                 @endif
