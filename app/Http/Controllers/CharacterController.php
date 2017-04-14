@@ -65,7 +65,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Show the given character.
+     * Display the specified Character.
      * 
      * @param  \Character $character
      * @return \Illuminate\Http\Response
