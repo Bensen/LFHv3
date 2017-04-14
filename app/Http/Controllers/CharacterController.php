@@ -15,7 +15,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Display a list of the user's characters.
+     * Display a list of the User's Characters.
      * 
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +26,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Show the form to create a new character.
+     * Show the form to create a new Character.
      * 
      * @return \Illuminate\Http\Response
      */
@@ -40,7 +40,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Store a new character related to the user.
+     * Store a new Character related to the user.
      * 
      * @return \Illuminate\Http\Response
      */
@@ -99,7 +99,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Delete the given character.
+     * Delete the given Character.
      * 
      * @param  Character $character
      * @return \Illuminate\Http\Response
