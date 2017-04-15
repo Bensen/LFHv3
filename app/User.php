@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function hasTeam()
     {
-        return ($this->whereNotNull('team_id')->first()) ? true : false ;
+        return isset($this->team_id);
     }
 
     public function hasRemainingCharacters()
