@@ -15,32 +15,32 @@ class CharacterController extends Controller
     }
 
     /**
-     * Show a list of the user's characters.
+     * Display a list of the User's Characters.
      * 
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $user = auth()->user();
-        return view('characters.index', compact('user'));
+        return view('character.index', compact('user'));
     }
 
     /**
-     * Show the form to create a new character.
+     * Show the form to create a new Character.
      * 
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
         if (!auth()->user()->hasRemainingCharacters()) {
-            return redirect()->route('characters.index');
+            return redirect()->route('character.index');
         }
         $fighters = Fighter::all();
-        return view('characters.create', compact('fighters'));
+        return view('character.create', compact('fighters'));
     }
 
     /**
-     * Save a new character related to the user.
+     * Store a new Character related to the user.
      * 
      * @return \Illuminate\Http\Response
      */
@@ -57,22 +57,23 @@ class CharacterController extends Controller
             'image' => $this->fighterImage(request('fighter')),
             'level' => 1,
             'experience' => 0,
+            'fame' => 0,
             'health' => 500,
             'primary' => 'str',
             'secondary' => 'rage',
         ]));
-        return redirect()->route('characters.index');
+        return redirect()->route('character.index');
     }
 
     /**
-     * Show the given character.
+     * Display the specified Character.
      * 
-     * @param  \Character $character
+     * @param  \App\Character $character
      * @return \Illuminate\Http\Response
      */
     public function show(Character $character)
     {
-        return view('characters.show', compact('character'));
+        return view('character.show', compact('character'));
     }
 
     /**
@@ -99,19 +100,19 @@ class CharacterController extends Controller
     }
 
     /**
-     * Delete the given character.
+     * Delete the specified Character.
      * 
-     * @param  Character $character
+     * @param  \App\Character $character
      * @return \Illuminate\Http\Response
      */
     public function destroy(Character $character)
     {
         $character->delete();
-        return redirect()->route('characters.index');
+        return redirect()->route('character.index');
     }
 
     public function fighterImage($fighter)
     {
-        return 'img/characters/'.strtolower($fighter).'.gif';
+    return 'img/characters/'.strtolower($fighter).'.gif';
     }
 }

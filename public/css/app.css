@@ -1,4 +1,16 @@
 /**
+ * FONTS
+ */
+
+@font-face {
+    font-family: 'Troika';
+    src: url('../fonts/troika-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/**
  * GENERAL
  */
 
@@ -10,10 +22,27 @@ body {
     background-size: cover;
 }
 
+body,
+button,
+input,
+textarea {
+    font-family: 'Troika', Roboto, sans-serif;
+    color: #fff;
+    font-size: 1.2rem;
+}
 
-/**
- * TYPOGRAPHY
- */
+body,
+button {
+    text-shadow: 0px 1px 1px black, 0px -1px 1px black, 1px 0px 1px black, -1px 0px 1px black;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #e0e0e0;
+}
 
 small {
     font-size: 60%;
@@ -21,17 +50,36 @@ small {
 
 .h1,
 h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 .h2,
 h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
 }
 
 .h3,
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+}
+
+
+/**
+ * FORMS
+ */
+
+label,
+.form-control {
+    font-size: 1.2rem;
+}
+
+label {
+    color: #fff599;
+}
+
+input,
+.btn-lg {
+    font-size: 1.75rem !important;
 }
 
 
@@ -39,18 +87,75 @@ h3 {
  * HEADER
  */
 
+.navbar,
+.navbar-brand {
+    font-size: 1.75rem;
+}
+
 .navbar {
     margin: 20px 0;
-    font-size: 1.5rem;
 }
 
 .navbar-brand {
     font-weight: 400;
-    font-size: 1.5rem;
 }
 
 .navbar .nav-link {
     padding: 0;
+}
+
+.navbar .avatar img {
+    height: 32px;
+    width: 32px;
+}
+
+.navbar .avatar .dropdown-toggle:after {
+    display: none;
+}
+
+.navbar a, .navbar .dropdown-item {
+    color: #fff;
+}
+
+.navbar a:hover, .navbar .dropdown-item:hover {
+    color: #e0e0e0;
+}
+
+
+/**
+ * CARDS
+ */
+
+h1.card-header {
+    background-color: #4B515D;
+}
+
+h3.card-header {
+    background-color: #eee;
+}
+
+.card-block h3,
+.card-block h5 {
+    margin-bottom: 0rem;
+}
+
+.card-text {
+    color: #000;
+    text-shadow: none;
+}
+
+
+/**
+ * BUTTONS
+ */
+
+.btn {
+    font-size: 1.25rem;
+}
+
+.btn-link {
+    color: #fff !important;
+    background-color: #fafafa;
 }
 
 
@@ -58,10 +163,14 @@ h3 {
  * CHARACTERS
  */
 
+#characters .card {
+    margin-bottom: 20px;
+}
+
 #characters .card-img-left {
     float: left;
-    padding-right: 1em;
-    border-bottom-left-radius: calc(.25rem - 1px);
+    padding-right: .5em;
+    border-radius: 0;
 }
 
 #characters .card-block {
@@ -84,38 +193,80 @@ h3 {
 
 
 /**
- * MDB
+ * FIGHTERS
  */
 
-label {
-    font-size: inherit;
+.Deep, .Deep a {
+    background-color: #cb4d01 !important;
+    color: #ffd0b4 !important;
 }
 
-#navigation .avatar img {
+.John, .John a {
+    background: #873fa5 !important;
+    color: #e9b4ff !important;
+}
+
+.Henry, .Henry a {
+    background: #015907 !important;
+    color: #93d297 !important;
+}
+
+.Rudolf, .Rudolf a {
+    background: #636363 !important;
+    color: #d0d0d0 !important;
+}
+
+.Louis, .Louis a {
+    background: #3071d7 !important;
+    color: #c6d4ea !important;
+}
+
+.Dennis, .Dennis a {
+    background: #578e8e !important;
+    color: #b8dada !important;
+}
+
+.Woody, .Woody a {
+    background: #7c4631 !important;
+    color: #c5aba0 !important;
+}
+
+.Davis, .Davis a {
+    background: #2057a2 !important;
+    color: #a7b6cc !important;
+}
+
+.Firen, .Firen a {
+    background-color: #ea6e0e !important;
+    color: #FFE390 !important;
+}
+
+.Freeze, .Freeze a {
+    background-color: #2792dc !important;
+    color: #bfe5ff !important;
+}
+
+
+/**
+ * RANKINGS
+ */
+
+#rankings,
+#rankings .badge {
+    font-size: 1.4rem;
+}
+
+#rankings {
+    color: #fff;
+}
+
+#rankings a {
+    color: #fff;
+}
+
+#rankings img {
+    float: left;
+    margin-right: 10px;
     height: 32px;
     width: 32px;
 }
-
-#navigation .avatar .dropdown-toggle:after {
-    display: none;
-}
-
-.card-block h3,
-.card-block h5 {
-    margin-bottom: 0rem;
-}
-
-
-/**
- * FONT AWESOME
- */
-
-.fa-5x {
-    font-size: 10em;
-}
-
-
-/**
- * BUTTONS
- */
-

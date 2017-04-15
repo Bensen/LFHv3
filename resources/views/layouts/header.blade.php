@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <nav class="navbar navbar-toggleable-sm navbar-dark primary-color">
+        <nav class="navbar navbar-toggleable-sm primary-color">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -9,7 +9,8 @@
                 <ul class="navbar-nav mr-auto">
                     @if (Auth::guest())
                     @else
-                        <li class="nav-item"><a class="nav-link" href="{{ route('characters.index') }}">Charaktere</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('character.index') }}">Kämpfer</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('team.index') }}">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pages.ranking') }}">Rangliste</a></li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="http://p383200.webspaceconfig.de/phpbb/" target="_blank">Forum</a></li>
