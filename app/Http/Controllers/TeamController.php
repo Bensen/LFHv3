@@ -23,7 +23,9 @@ class TeamController extends Controller
             return redirect()->route('team.create');
         }
         $team = auth()->user()->team()->first();
-        return view('team.index', compact('team'));
+        $users = \App\User::where('team_id', $team->id)->get();
+        dd($users);
+        return view('team.index', compact('team', 'users'));
     }
 
     /**
