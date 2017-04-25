@@ -12,7 +12,7 @@ class FightersTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = ['Deep', 'John', 'Henry', 'Rudolf', 'Louis', 'Firen', 'Freeze', 'Dennis', 'Woody', 'Davis'];
+        $fighters = ['Deep', 'John', 'Henry', 'Rudolf', 'Louis', 'Firen', 'Freeze', 'Dennis', 'Woody', 'Davis'];
         $descriptions = [
             'Deep ist ein berühmter Schwertkämpfer und bekannt für seinen ultimativen Umgang mit dem Schwert.',
             'John ist die Zauberer-Legende, denn er beherrscht spezielle Fähigkeiten aus allen Bereichen der Magie.',
@@ -25,12 +25,18 @@ class FightersTableSeeder extends Seeder
             'Woody ist der Nachkomme der Tigerkünste und versucht stets die Kontrolle in einen Kampf zu wahren.',
             'Davis ist ein außerordentlich begabter Nahkämpfer, der sich dem Drachenclan angeschlossen hat.',
         ];
+        $health = ['700', '500', '600', '600', '800', '500', '500', '700', '700', '700'];
+        $primary = ['str', 'int', 'agi', 'agi', 'str', 'int', 'int', 'str', 'str', 'str'];
+        $secondary = ['energy', 'mana', 'energy', 'energy', 'mana', 'mana', 'mana', 'energy', 'energy', 'mana'];
 
-        for ($i = 0; $i < count($names); $i++) { 
+        for ($i = 0; $i < count($fighters); $i++) { 
             App\Fighter::create([
-                'name' => $names[$i],
-                'image' => 'img/characters/'.strtolower($names[$i]).'.gif',
+                'name' => $fighters[$i],
+                'image' => '/img/characters/'.strtolower($fighters[$i]).'.gif',
                 'description' => $descriptions[$i],
+                'health' => $health[$i],
+                'primary' => $primary[$i],
+                'secondary' => $secondary[$i],
             ]);
         }
     }

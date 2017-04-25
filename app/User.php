@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'team_id',
+        'name', 'email', 'password',
     ];
 
     protected $hidden = [
@@ -24,24 +24,9 @@ class User extends Authenticatable
         return $this->hasMany(Character::class);
     }
 
-    public function team()
-    {
-        return $this->belongsTo(Team::class);
-    }
-
-    public function hasTeam()
-    {
-        return isset($this->team_id);
-    }
-
     public function hasRemainingCharacters()
     {
-        return ($this->remainingCharacters()) ? true : false ;
-    }
-
-    public function remainingCharacters()
-    {
-        return ($this->characters()->count() < $this->getMaxCharacters()) ? true : false ;
+        return ($this->characters()->count() < $this->maxCharacters) ? true : false ;
     }
 
     public function getMaxCharacters()

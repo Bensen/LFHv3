@@ -22,10 +22,10 @@
 @endsection
 
 @section('content')
-<div class="row justify-content-center">
+<div class="row">
     <div class="col">
         <div class="card">
-            <h1 class="card-header">Wähle einen Kämpfer</h1>
+            <h1 class="card-header">Wähle deinen Kämpfer</h1>
             <div id="characters" class="card-block">
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('character.store') }}">
                     {{ csrf_field() }}
@@ -43,7 +43,7 @@
                                     </label>
                                 </div>
                             </div>
-                        @endforeach                        
+                        @endforeach
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-6">
@@ -54,8 +54,13 @@
                                     <div class="form-control-feedback">{{ $errors->first('name') }}</div>
                                 @endif
                             </div>
+                            <div class="form-group{{ $errors->has('fighter') ? ' has-danger' : '' }}">
+                                @if ($errors->has('fighter'))
+                                    <div class="form-control-feedback">{{ $errors->first('fighter') }}</div>
+                                @endif
+                            </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Erstellen</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Wählen</button>
                             </div>
                         </div>
                     </div>

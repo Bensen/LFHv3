@@ -3,29 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Team;
+use App\Character;
 use Illuminate\Http\Request;
+use App\Traits\TeamTrait;
 
 class TeamController extends Controller
 {
+    use TeamTrait;
+
     function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'character']);
     }
 
     /**
-     * Display the Team where a User is member of.
+     * Redirect to team.create or team.show.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        if (!auth()->user()->hasTeam()) {
+        $character = Character::find(session('character'));
+        // Redirect if the Character has no Team.
+        if (is_null($character->team_id)) {
             return redirect()->route('team.create');
         }
-        $team = auth()->user()->team()->first();
-        $users = \App\User::where('team_id', $team->id)->get();
-        dd($users);
-        return view('team.index', compact('team', 'users'));
+        $team = Team::find($character->team_id);
+        return redirect()->route('team.show', $team->id);
     }
 
     /**
@@ -35,10 +39,12 @@ class TeamController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->hasTeam()) {
+        $character = Character::find(session('character'));
+        if (isset($character->team_id)) {
             return redirect()->route('team.index');
         }
-        return view('team.create');
+        $emblems = \App\Emblem::all();
+        return view('teams.create', compact('emblems'));
     }
 
     /**
@@ -49,14 +55,21 @@ class TeamController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required|min:3|max:25|alpha_num|unique:teams',
+            'name' => 'required|min:3|max:25|unique:teams',
         ]);
         $team = new Team([
             'name' => request('name'),
+            'emblem' => request('emblem'),
+            'color' => request('color'),
             'fame' => 0,
         ]);
         $team->save();
-        auth()->user()->team()->associate($team)->save();
+
+        $character = Character::find(session('character'));
+        $character->team()->associate($team);
+        $character->role = 'Leader';
+        $character->save();
+
         return redirect()->route('team.index');
     }
 
@@ -68,7 +81,11 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return view('team.show', compact('team'));
+        $character = Character::find(session('character'));
+        $characters = $team->characters()->where('role', '!=', 'Applicant')->orderBy('fame', 'desc')->get();
+        $applicants = $team->characters()->where('role', 'Applicant')->get();
+        $this->updateFame($team, $characters);
+        return view('teams.show', compact('team', 'characters', 'character', 'applicants'));
     }
 
     /**
@@ -95,13 +112,54 @@ class TeamController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the specified Team.
      *
      * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
     public function destroy(Team $team)
     {
+        $this->dismissMembers($team);
+        $team->delete($team);
+        return redirect()->route('team.index');
+    }
+
+    public function apply(Team $team)
+    {
+        $character = Character::find(session('character'));
+        $character->team()->associate($team);
+        $character->role = 'Applicant';
+        $character->save();
+        return redirect()->intended('team');
+    }
+
+    public function kick(Team $team)
+    {
         //
+        return redirect()->intended('team');
+    }
+
+    public function leave(Team $team)
+    {
+        $character = Character::find(session('character'));
+        $character->team()->dissociate($team);
+        $character->role = 'None';
+        $character->save();
+        return redirect()->intended('team');
+    }
+
+    public function accept(Team $team, Character $applicant)
+    {
+        $applicant->role = 'Member';
+        $applicant->save();
+        return redirect()->intended('team');
+    }
+
+    public function reject(Team $team, Character $applicant)
+    {
+        $applicant->team()->dissociate($team);
+        $applicant->role = 'None';
+        $applicant->save();
+        return redirect()->intended('team');
     }
 }

@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    protected $fillable = ['name', 'fame',];
+    protected $fillable = [
+        'name', 'emblem', 'color', 'fame',
+    ];
 
-    public function users()
+    public function characters()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Character::class);
     }
 }

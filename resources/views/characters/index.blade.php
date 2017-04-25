@@ -11,42 +11,35 @@
             <h1 class="card-header">Meine Kämpfer</h1>
             <div id="characters" class="card-block">
                 <div class="row">
-
+                    @if (session('status'))
+                        <div class="col-12">
+                            <span class="alert alert-warning" role="alert">
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ session('status') }}
+                            </span>
+                        </div>
+                    @endif
                     @foreach ($user->characters as $character)
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card">
                                 <h3 class="card-header {{ $character->fighter }}">
-                                    <a href="{{ route('character.show', ['$character' => $character->id]) }}">
+                                    <a href="{{ route('character.play', $character->id) }}" onclick="event.preventDefault(); document.getElementById('character-form{{ $character->id }}').submit();">
+                                        <form id="character-form{{ $character->id }}" action="{{ route('character.play', $character->id) }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                         {{ $character->name }} <small>({{ $character->level }})</small>
                                     </a>
-                                    <button class="btn btn-danger btn-sm m-0 float-right" type="button" data-toggle="modal" data-target="#characterModal{{ $character->id }}"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                    <button class="btn btn-danger btn-sm m-0 float-right" type="button" data-toggle="modal" data-target="#deleteCharacterModal{{ $character->id }}">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
 
-                                    <div class="modal fade" id="characterModal{{ $character->id }}" tabindex="-1" role="dialog" aria-labelledby="characterModal{{ $character->id }}Label" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3 class="modal-title" id="characterModal{{ $character->id }}Label">Charakter <strong>"{{ $character->name }}"</strong> löschen?</h3>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form class="float-right" method="POST" action="{{ route('character.destroy', ['characters' => $character->id]) }}">
-                                                        {{ csrf_field() }} {{ method_field('DELETE') }}
-                                                        <button class="btn" type="button" data-dismiss="modal">Abbrechen</button>
-                                                        <button class="btn btn-danger" type="submit">Löschen</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @include('characters.destroy')
 
                                 </h3>
-                                <a href="{{ route('character.show', ['$character' => $character->id]) }}">
+                                <a href="{{ route('character.play', $character->id) }}" onclick="event.preventDefault(); document.getElementById('character-form{{ $character->id }}').submit();">
                                     <div class="card-block clearfix">
                                         <img class="card-img-left" src="{{ asset($character->image) }}">
                                         <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{ $character->experience }}/100</div>
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
                                         </div>
                                         <div class="progress">
                                             <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ $character->health }}/{{ $character->health }}</div>
@@ -58,11 +51,11 @@
                     @endforeach
 
                     @for ($i = $user->characters->count(); $i < $user->getMaxCharacters(); $i++)
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card">
                                 <a href="{{ route('character.create') }}">
                                     <h3 class="card-header clearfix">
-                                        Erstellen
+                                        Wählen
                                         <button class="btn btn-primary btn-sm m-0 float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     </h3>
                                     <div class="card-block clearfix">

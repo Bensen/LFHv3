@@ -22,7 +22,7 @@ class CharacterController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('character.index', compact('user'));
+        return view('characters.index', compact('user'));
     }
 
     /**
@@ -36,7 +36,7 @@ class CharacterController extends Controller
             return redirect()->route('character.index');
         }
         $fighters = Fighter::all();
-        return view('character.create', compact('fighters'));
+        return view('characters.create', compact('fighters'));
     }
 
     /**
@@ -48,19 +48,23 @@ class CharacterController extends Controller
     {
         $fighters = Fighter::pluck('name')->toArray();
         $this->validate(request(), [
-            'name' => 'required|min:3|max:25|alpha_num|not_in:'.Rule::notIn($fighters).'unique:characters',
+            'name' => 'required|min:3|max:25|not_in:'.Rule::notIn($fighters).'unique:characters',
             'fighter' => 'required|in:'.Rule::in($fighters),
         ]);
+        $fighter = Fighter::where('name', request('fighter'))->first();
         auth()->user()->characters()->save(new Character([
+            'team_id' => NULL,
+            'role' => 'None',
             'name' => request('name'),
             'fighter' => request('fighter'),
-            'image' => $this->fighterImage(request('fighter')),
+            'image' => $fighter->image,
             'level' => 1,
             'experience' => 0,
-            'fame' => 0,
-            'health' => 500,
-            'primary' => 'str',
-            'secondary' => 'rage',
+            'fame' => rand(0, 100),
+            'health' => $fighter->health,
+            'maxHealth' => $fighter->health,
+            'primary' => $fighter->primary,
+            'secondary' => $fighter->secondary,
         ]));
         return redirect()->route('character.index');
     }
@@ -73,7 +77,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return view('character.show', compact('character'));
+        return view('characters.show', compact('character'));
     }
 
     /**
@@ -111,8 +115,18 @@ class CharacterController extends Controller
         return redirect()->route('character.index');
     }
 
-    public function fighterImage($fighter)
+    /**
+     * Register a Character into the Session.
+     * 
+     * @param  \App\Character $character
+     * @return \Illuminate\Http\Response
+     */
+    public function play(Character $character)
     {
-    return 'img/characters/'.strtolower($fighter).'.gif';
+        if (session('character')) {
+            session()->forget('character');
+        }
+        session(['character' => $character->id]);
+        return redirect()->route('character.show', $character->id);
     }
 }

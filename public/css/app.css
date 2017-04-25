@@ -25,7 +25,8 @@ body {
 body,
 button,
 input,
-textarea {
+textarea,
+.form-control-feedback {
     font-family: 'Troika', Roboto, sans-serif;
     color: #fff;
     font-size: 1.2rem;
@@ -36,12 +37,8 @@ button {
     text-shadow: 0px 1px 1px black, 0px -1px 1px black, 1px 0px 1px black, -1px 0px 1px black;
 }
 
-a {
+a, a:hover {
     color: #fff;
-}
-
-a:hover {
-    color: #e0e0e0;
 }
 
 small {
@@ -113,12 +110,13 @@ input,
     display: none;
 }
 
-.navbar a, .navbar .dropdown-item {
+.navbar a,
+.navbar .dropdown-item {
     color: #fff;
 }
 
-.navbar a:hover, .navbar .dropdown-item:hover {
-    color: #e0e0e0;
+.navbar form input {
+    margin: 0;
 }
 
 
@@ -126,7 +124,8 @@ input,
  * CARDS
  */
 
-h1.card-header {
+h1.card-header,
+.modal-header {
     background-color: #4B515D;
 }
 
@@ -146,16 +145,117 @@ h3.card-header {
 
 
 /**
+ * TABS
+ */
+
+.nav-tabs {
+    font-size: 1.5rem;
+}
+
+.nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #4285F4;
+    border: none;
+}
+
+.nav-tabs .nav-link {
+    background-color: #b0bec5;
+    border: none;
+}
+
+
+/**
  * BUTTONS
  */
 
 .btn {
     font-size: 1.25rem;
+    cursor: pointer;
 }
 
 .btn-link {
     color: #fff !important;
     background-color: #fafafa;
+}
+
+
+/**
+ * ALERTS
+ */
+
+.alert {
+    display: inline-block;
+}
+
+.alert-warning {
+    background-color: #ffea9b;
+    border-color: #cea97d;
+    color: #f7ca74;
+}
+
+
+/**
+ * FIGHTERS
+ */
+
+.Deep,
+.Deep a {
+    background-color: #cb4d01 !important;
+    color: #ffd0b4 !important;
+}
+
+.John,
+.John a {
+    background: #873fa5 !important;
+    color: #e9b4ff !important;
+}
+
+.Henry,
+.Henry a {
+    background: #015907 !important;
+    color: #93d297 !important;
+}
+
+.Rudolf,
+.Rudolf a {
+    background: #636363 !important;
+    color: #d0d0d0 !important;
+}
+
+.Louis,
+.Louis a {
+    background: #3071d7 !important;
+    color: #c6d4ea !important;
+}
+
+.Dennis,
+.Dennis a {
+    background: #578e8e !important;
+    color: #b8dada !important;
+}
+
+.Woody,
+.Woody a {
+    background: #7c4631 !important;
+    color: #c5aba0 !important;
+}
+
+.Davis,
+.Davis a {
+    background: #2057a2 !important;
+    color: #a7b6cc !important;
+}
+
+.Firen,
+.Firen a {
+    background-color: #ea6e0e !important;
+    color: #FFE390 !important;
+}
+
+.Freeze,
+.Freeze a {
+    background-color: #2792dc !important;
+    color: #bfe5ff !important;
 }
 
 
@@ -193,78 +293,19 @@ h3.card-header {
 
 
 /**
- * FIGHTERS
+ * RANKING
  */
 
-.Deep, .Deep a {
-    background-color: #cb4d01 !important;
-    color: #ffd0b4 !important;
+#ranking {
+    margin-bottom: 1.25rem;
 }
 
-.John, .John a {
-    background: #873fa5 !important;
-    color: #e9b4ff !important;
-}
-
-.Henry, .Henry a {
-    background: #015907 !important;
-    color: #93d297 !important;
-}
-
-.Rudolf, .Rudolf a {
-    background: #636363 !important;
-    color: #d0d0d0 !important;
-}
-
-.Louis, .Louis a {
-    background: #3071d7 !important;
-    color: #c6d4ea !important;
-}
-
-.Dennis, .Dennis a {
-    background: #578e8e !important;
-    color: #b8dada !important;
-}
-
-.Woody, .Woody a {
-    background: #7c4631 !important;
-    color: #c5aba0 !important;
-}
-
-.Davis, .Davis a {
-    background: #2057a2 !important;
-    color: #a7b6cc !important;
-}
-
-.Firen, .Firen a {
-    background-color: #ea6e0e !important;
-    color: #FFE390 !important;
-}
-
-.Freeze, .Freeze a {
-    background-color: #2792dc !important;
-    color: #bfe5ff !important;
-}
-
-
-/**
- * RANKINGS
- */
-
-#rankings,
-#rankings .badge {
+#ranking,
+#ranking .badge {
     font-size: 1.4rem;
 }
 
-#rankings {
-    color: #fff;
-}
-
-#rankings a {
-    color: #fff;
-}
-
-#rankings img {
+#ranking img {
     float: left;
     margin-right: 10px;
     height: 32px;

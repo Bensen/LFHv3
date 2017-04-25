@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFightersTable extends Migration
+class CreateEmblemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateFightersTable extends Migration
      */
     public function up()
     {
-        Schema::create('fighters', function (Blueprint $table) {
+        Schema::create('emblems', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('image');
-            $table->string('description');
-            $table->integer('health');
-            $table->string('primary');
-            $table->string('secondary');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateFightersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fighters');
+        Schema::dropIfExists('emblems');
     }
 }

@@ -19,6 +19,7 @@ class PageController extends Controller
     public function ranking()
     {
         $characters = \App\Character::orderBy('fame', 'desc')->get();
-        return view('pages.ranking', compact('characters'));
+        $teams = \App\Team::orderBy('fame', 'desc')->get();
+        return view('pages.ranking', compact('characters', 'teams'));
     }
 }

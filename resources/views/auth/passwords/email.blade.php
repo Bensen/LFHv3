@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-lg-6 ">
+    <div class="col-md-6">
         <div class="card">
             <h1 class="card-header">Passwort vergessen</h1>
             <div class="card-block">
