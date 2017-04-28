@@ -52,20 +52,22 @@ class CharacterController extends Controller
             'fighter' => 'required|in:'.Rule::in($fighters),
         ]);
         $fighter = Fighter::where('name', request('fighter'))->first();
-        auth()->user()->characters()->save(new Character([
-            'team_id' => NULL,
-            'role' => 'None',
-            'name' => request('name'),
-            'fighter' => request('fighter'),
-            'image' => $fighter->image,
-            'level' => 1,
-            'experience' => 0,
-            'fame' => rand(0, 100),
-            'health' => $fighter->health,
-            'maxHealth' => $fighter->health,
-            'primary' => $fighter->primary,
-            'secondary' => $fighter->secondary,
-        ]));
+
+        $character = new Character;
+        $character->team_id = NULL;
+        $character->role = 'None';
+        $character->name = request('name');
+        $character->fighter = request('fighter');
+        $character->image = $fighter->image;
+        $character->level = 1;
+        $character->experience = 0;
+        $character->fame = rand(0, 100);
+        $character->health = $fighter->health;
+        $character->damage = 0;
+        $character->primary = $fighter->primary;
+        $character->secondary = $fighter->secondary;
+        auth()->user()->characters()->save($character);
+        
         return redirect()->route('character.index');
     }
 

@@ -25,6 +25,7 @@ class CreateCharactersTable extends Migration
             $table->integer('experience');
             $table->integer('fame');
             $table->integer('health');
+            $table->integer('damage');
             $table->string('primary');
             $table->string('secondary');
             $table->timestamps();

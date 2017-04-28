@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    protected $fillable = [
-        'name', 'emblem', 'color', 'fame',
-    ];
+    protected $table = 'teams';
+
+    protected $fillable = ['name', 'emblem', 'color'];
 
     public function characters()
     {

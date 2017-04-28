@@ -57,12 +57,11 @@ class TeamController extends Controller
         $this->validate(request(), [
             'name' => 'required|min:3|max:25|unique:teams',
         ]);
-        $team = new Team([
-            'name' => request('name'),
-            'emblem' => request('emblem'),
-            'color' => request('color'),
-            'fame' => 0,
-        ]);
+        $team = new Team;
+        $team->name = request('name');
+        $team->emblem = request('emblem');
+        $team->color = request('color');
+        $team->fame = 0;
         $team->save();
 
         $character = Character::find(session('character'));

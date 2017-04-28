@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
-    protected $fillable = [
-        'team_id', 'role', 'name', 'fighter', 'image', 'level', 'experience', 'fame', 'health', 'maxHealth', 'primary', 'secondary',
-    ];
+    protected $table = 'characters';
+
+    protected $fillable = ['name', 'fighter'];
 
     public function user()
     {
