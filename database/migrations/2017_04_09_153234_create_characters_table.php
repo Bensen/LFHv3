@@ -15,10 +15,10 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('team_id')->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->integer('team_id')->unsigned()->nullable();
             $table->string('role');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('fighter');
             $table->string('image');
             $table->integer('level');
@@ -29,6 +29,9 @@ class CreateCharactersTable extends Migration
             $table->string('primary');
             $table->string('secondary');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 
