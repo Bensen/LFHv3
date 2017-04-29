@@ -8,11 +8,11 @@
 <script>
     $(document).ready(function() {
         // set initial state
-        var $checked = $('input[type="radio"]:checked');
+        var $checked = $('input[name="emblem"]:checked');
         $checked.closest('.card').addClass('stylish-color');
 
         // update on change
-        $('input[type="radio"]').change(function() {
+        $('input[name="emblem"]').change(function() {
           $checked.prop('checked', false).closest('.card').removeClass('stylish-color');
           $checked = $(this);
           $checked.closest('.card').addClass('stylish-color');
@@ -44,7 +44,26 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Hauptfarbe</h3>
+                            <div class="row form-group">
+                                @foreach ($colors as $color)
+                                    <div class="col-xs-3 col-lg-2 form-check">
+                                        <div class="card {{ $color }}">
+                                            <div class="card-block text-center">
+                                                <label class="form-check-label">
+                                                    <i class="fa fa-{{ $color }} fa-4x" aria-hidden="true"></i>
+                                                    <input style="display: none;" type="radio" name="color" value="{{ $color }}">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">

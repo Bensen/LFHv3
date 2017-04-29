@@ -44,7 +44,8 @@ class TeamController extends Controller
             return redirect()->route('team.index');
         }
         $emblems = \App\Emblem::all();
-        return view('teams.create', compact('emblems'));
+        $colors = \App\Fighter::pluck('name');
+        return view('teams.create', compact('emblems', 'colors'));
     }
 
     /**
@@ -54,8 +55,12 @@ class TeamController extends Controller
      */
     public function store()
     {
+        $emblems = Emblem::pluck('name')->toArray();
+        $colors = Fighter::pluck('name')->toArray();
         $this->validate(request(), [
             'name' => 'required|min:3|max:25|unique:teams',
+            'emblem' => 'required|in:'.Rule::in($emblems),
+            'color' => 'required|in:'.Rule::in($colors),
         ]);
         $team = new Team;
         $team->name = request('name');
