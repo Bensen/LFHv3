@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Character;
+use App\Team;
 use App\Fighter;
 
 class CharacterController extends Controller
@@ -79,7 +80,10 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return view('characters.show', compact('character'));
+        if ($character->hasTeam()) {
+            $team = Team::find($character->team_id);
+        }
+        return view('characters.show', compact('character', 'team'));
     }
 
     /**
