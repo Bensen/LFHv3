@@ -20,7 +20,7 @@
                             </span>
                         </div>
                         <div class="col-4 text-right">
-                            <span class="badge badge-default">{{ $team->fame }} <i class="fa fa-trophy amber-text" aria-hidden="true"></i></span>
+                            <span class="badge badge-default">{{ round($team->fame) }} <i class="fa fa-trophy amber-text" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </div>

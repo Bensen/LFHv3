@@ -23,7 +23,7 @@ class CreateCharactersTable extends Migration
             $table->string('image');
             $table->integer('level');
             $table->integer('experience');
-            $table->integer('fame');
+            $table->float('fame');
             $table->integer('health');
             $table->integer('damage');
             $table->string('primary');

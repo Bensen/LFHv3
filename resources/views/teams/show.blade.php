@@ -11,7 +11,7 @@
             <h1 class="card-header">
                 {{ $team->name }}
                 <span class="badge badge-default float-right">
-                    {{ (int) $team->fame }} <i class="fa fa-trophy amber-text" aria-hidden="true"></i>
+                    {{ round($team->fame) }} <i class="fa fa-trophy amber-text" aria-hidden="true"></i>
                 </span>
             </h1>
             <div class="card-block">
