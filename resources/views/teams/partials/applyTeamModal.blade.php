@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="applyTeamModalLabel">Bei Team <strong>"{{ $team->name }}"</strong> bewerben?</h3>
+                <h3 class="modal-title" id="applyTeamModalLabel">Bei <strong>"{{ $team->name }}"</strong> bewerben?</h3>
                 <button class="btn btn-danger btn-sm m-0 float-right" type="button" data-dismiss="modal" aria-label="Close">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
