@@ -131,4 +131,12 @@ class CharacterController extends Controller
         session(['character' => $character->id]);
         return redirect()->route('character.show', $character->id);
     }
+
+    public function addExp(Character $character)
+    {
+        $character->experience += 100;
+        $character->save();
+        \App\Game\Level::up($character);
+        return redirect()->back();
+    }
 }

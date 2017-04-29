@@ -38,12 +38,7 @@
                                 <a href="{{ route('character.play', $character->id) }}" onclick="event.preventDefault(); document.getElementById('character-form{{ $character->id }}').submit();">
                                     <div class="card-block clearfix">
                                         <img class="card-img-left" src="{{ asset($character->image) }}">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ $character->health }}/{{ $character->health }}</div>
-                                        </div>
+                                        @include('characters.partials.bars')
                                     </div>
                                 </a>
                             </div>

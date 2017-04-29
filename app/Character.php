@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Game\Level;
 
 class Character extends Model
 {
@@ -32,5 +33,10 @@ class Character extends Model
     public function hasRole($role)
     {
         return ($this->role == $role) ? true : false ;
+    }
+
+    public function experience()
+    {
+        return Level::experience($this);
     }
 }
