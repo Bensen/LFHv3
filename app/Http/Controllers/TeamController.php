@@ -130,17 +130,20 @@ class TeamController extends Controller
 
     public function apply(Team $team)
     {
+        if ($team->characters->count() == $team->getMaxCharacters) {
+            return redirect()->back()->with('status', 'Das Team ist bereits voll.');
+        }
         $character = Character::find(session('character'));
         $character->team()->associate($team);
         $character->role = 'Applicant';
         $character->save();
-        return redirect()->intended('team');
+        return redirect()->back();
     }
 
     public function kick(Team $team)
     {
         //
-        return redirect()->intended('team');
+        return redirect()->back();
     }
 
     public function leave(Team $team)
@@ -149,14 +152,14 @@ class TeamController extends Controller
         $character->team()->dissociate($team);
         $character->role = 'None';
         $character->save();
-        return redirect()->intended('team');
+        return redirect()->back();
     }
 
     public function accept(Team $team, Character $applicant)
     {
         $applicant->role = 'Member';
         $applicant->save();
-        return redirect()->intended('team');
+        return redirect()->back();
     }
 
     public function reject(Team $team, Character $applicant)
@@ -164,6 +167,6 @@ class TeamController extends Controller
         $applicant->team()->dissociate($team);
         $applicant->role = 'None';
         $applicant->save();
-        return redirect()->intended('team');
+        return redirect()->back();
     }
 }
