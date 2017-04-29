@@ -17,7 +17,7 @@
                             <img src="{{ asset($character->image) }}">
                             <span class="badge {{ $character->fighter }}">
                                 @if ($character->hasTeam()) [{{ $character->team->name }}] @endif
-                                {{ $character->name }} {{ $character->level }}
+                                {{ $character->name }} ({{ $character->level }})
                             </span>
                         </div>
                         <div class="col-4 text-right">

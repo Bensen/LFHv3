@@ -50,7 +50,7 @@
                             <div class="card">
                                 <a href="{{ route('character.create') }}">
                                     <h3 class="card-header clearfix">
-                                        Wählen
+                                        Erstellen
                                         <button class="btn btn-primary btn-sm m-0 float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     </h3>
                                     <div class="card-block clearfix">

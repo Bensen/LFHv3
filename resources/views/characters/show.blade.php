@@ -10,16 +10,15 @@
     <div class="col">
         <div class="card">
             <h1 class="card-header">
-                {{ $character->name }} {{ $character->level }}
+                {{ $character->name }} ({{ $character->level }})
                 <span class="badge badge-default float-right">
                     {{ $character->fame }} <i class="fa fa-trophy amber-text" aria-hidden="true"></i>
                 </span>
             </h1>
             <div id="character" class="card-block">
-                <form method="POST" action="{{ route('character.exp', $character) }}">
-                    {{ csrf_field() }}
-                    <button class="btn btn-success" type="submit">+100xp</button>
-                </form>
+                @if ($character->hasTeam())
+                    <a class="btn btn-info" href="{{ route('team.show', $team->id) }}">{{ $team->name }}</a>
+                @endif
             </div>
         </div>
     </div>
